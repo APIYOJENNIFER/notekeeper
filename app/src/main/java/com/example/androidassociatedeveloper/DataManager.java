@@ -1,5 +1,9 @@
 package com.example.androidassociatedeveloper;
 
+import com.example.androidassociatedeveloper.models.CourseInfo;
+import com.example.androidassociatedeveloper.models.ModuleInfo;
+import com.example.androidassociatedeveloper.models.NoteInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 

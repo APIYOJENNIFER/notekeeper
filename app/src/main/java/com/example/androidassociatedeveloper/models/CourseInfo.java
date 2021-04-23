@@ -1,6 +1,5 @@
-package com.example.androidassociatedeveloper;
+package com.example.androidassociatedeveloper.models;
 
-import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
