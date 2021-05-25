@@ -1,4 +1,4 @@
-package com.example.androidassociatedeveloper.ui.ui.gallery;
+package com.example.androidassociatedeveloper.ui.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,24 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.androidassociatedeveloper.ui.R;
-import com.example.androidassociatedeveloper.ui.databinding.FragmentGalleryBinding;
+import com.example.androidassociatedeveloper.databinding.FragmentSlideshowBinding;
 
-public class GalleryFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
-    private FragmentGalleryBinding binding;
+public class SlideshowFragment extends Fragment {
+
+    private SlideshowViewModel slideshowViewModel;
+    private FragmentSlideshowBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        slideshowViewModel =
+                new ViewModelProvider(this).get(SlideshowViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textSlideshow;
+        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -1,4 +1,4 @@
-package com.example.androidassociatedeveloper.ui.ui.home;
+package com.example.androidassociatedeveloper.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

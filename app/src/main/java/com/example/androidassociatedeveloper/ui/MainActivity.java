@@ -1,26 +1,30 @@
 package com.example.androidassociatedeveloper.ui;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.example.androidassociatedeveloper.R;
-import com.example.androidassociatedeveloper.databinding.ActivityMainBinding;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.androidassociatedeveloper.ui.databinding.ActivityMainBinding;
+import com.example.androidassociatedeveloper.R;
+import com.example.androidassociatedeveloper.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+import org.jetbrains.annotations.NotNull;
+
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -29,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        if (binding.appBarMain.getRoot().getParent()!=null){
+            ((ViewGroup)binding.appBarMain.getRoot().getParent()).removeView(binding.appBarMain.getRoot());
+        }
         setContentView(binding.appBarMain.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
@@ -43,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
-                this, drawer, binding.appBarMain.toolbar, getString(R.string.open_drawer),
-                getString(R.string.close_drawer)
+                this, drawer, binding.appBarMain.toolbar, R.string.open_drawer,
+                R.string.close_drawer
         );
         drawer.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
@@ -60,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -79,10 +89,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = binding.drawerLayout;
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_notes) {
+            handleSelection("Notes");
+        } else if (id == R.id.nav_courses) {
+
+        }
+
+        DrawerLayout drawer = binding.drawerLayout;
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void handleSelection(String notes) {
+        View view = binding.appBarMain.getRoot();
+        Snackbar.make(view, notes, Snackbar.LENGTH_LONG).show();
     }
 }
