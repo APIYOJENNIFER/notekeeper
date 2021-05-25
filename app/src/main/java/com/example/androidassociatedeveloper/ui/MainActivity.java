@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+//testing dropping untracked files
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         if (binding.appBarMain.getRoot().getParent()!=null){
             ((ViewGroup)binding.appBarMain.getRoot().getParent()).removeView(binding.appBarMain.getRoot());
