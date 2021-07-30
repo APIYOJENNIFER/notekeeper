@@ -27,4 +27,12 @@
     <string name="open_drawer">open drawer</string>
     <string name="menu_notes">Notes</string>
     <string name="menu_courses">Courses</string>
+    <string name="course">Course</string>
+    <string name="title">Title</string>
+    <string name="notes">Notes</string>
+    <string name="courses">Courses</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
+    <string name="shared_enough">Don\'t you think you\'ve shared enough</string>
 </resources>
