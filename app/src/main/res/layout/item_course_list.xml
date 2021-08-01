@@ -27,7 +27,7 @@
                 android:layout_marginRight="0dp"
                 android:text="@string/course"
                 android:textAlignment="center"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textAppearance="@style/CourseTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
