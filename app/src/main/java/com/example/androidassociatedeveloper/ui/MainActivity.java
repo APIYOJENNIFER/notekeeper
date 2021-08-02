@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidassociatedeveloper.DataManager;
 import com.example.androidassociatedeveloper.R;
+import com.example.androidassociatedeveloper.SettingsActivity;
 import com.example.androidassociatedeveloper.adapters.CourseRecyclerAdapter;
 import com.example.androidassociatedeveloper.adapters.NoteRecyclerAdapter;
 import com.example.androidassociatedeveloper.databinding.ActivityMainBinding;
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity
             displayNotes();
         } else if (id == R.id.nav_courses) {
             displayCourses();
-        }else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
             handleSelection(R.string.shared_enough);
         } else if (id == R.id.nav_send) {
             handleSelection(R.string.send);
