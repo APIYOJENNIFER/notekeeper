@@ -21,24 +21,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_assignment_24"
+                app:layout_constraintBottom_toBottomOf="@id/text_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text_course"
+                app:tint="@color/orange" />
+
             <TextView
                 android:id="@+id/text_course"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Course"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_marginStart="10dp"
+                android:text="@string/course"
+                android:textAppearance="@style/CourseTitle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Title"
+                android:text="@string/title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/text_course"
                 app:layout_constraintTop_toBottomOf="@id/text_course" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

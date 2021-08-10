@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidassociatedeveloper.DataManager;
 import com.example.androidassociatedeveloper.R;
+import com.example.androidassociatedeveloper.SettingsActivity;
 import com.example.androidassociatedeveloper.adapters.CourseRecyclerAdapter;
 import com.example.androidassociatedeveloper.adapters.NoteRecyclerAdapter;
 import com.example.androidassociatedeveloper.databinding.ActivityMainBinding;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity
     private void initializeDisplayContent() {
         mRecyclerItems = (RecyclerView) findViewById(R.id.list_items);
         mNotesLayoutManager = new LinearLayoutManager(this);
-        mCoursesLayoutManager = new GridLayoutManager(this, 2);
+        mCoursesLayoutManager = new GridLayoutManager(this, getResources().getInteger(R.integer.course_grid_span_2));
 
         List<NoteInfo> notes = DataManager.getInstance().getNotes();
         mNoteRecyclerAdapter = new NoteRecyclerAdapter(this, notes);
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
@@ -155,10 +157,10 @@ public class MainActivity extends AppCompatActivity
             displayNotes();
         } else if (id == R.id.nav_courses) {
             displayCourses();
-        }else if (id == R.id.nav_share) {
-            handleSelection("Don't you think you've shared enough");
+        } else if (id == R.id.nav_share) {
+            handleSelection(R.string.shared_enough);
         } else if (id == R.id.nav_send) {
-            handleSelection("Send");
+            handleSelection(R.string.send);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -166,8 +168,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void handleSelection(String message) {
+    private void handleSelection(int message_id) {
         View view = findViewById(R.id.list_items);
-        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(view, message_id, Snackbar.LENGTH_LONG).show();
     }
 }
